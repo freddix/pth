@@ -1,7 +1,7 @@
 Summary:	The GNU portable threads
 Name:		pth
 Version:	2.0.7
-Release:	3
+Release:	4
 Epoch:		1
 License:	LGPL
 Group:		Libraries
@@ -55,6 +55,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -73,7 +75,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc HACKING
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/libpth.so
-%{_libdir}/lib*.la
 %{_aclocaldir}/pth.m4
 %{_includedir}/*.h
 %{_mandir}/man3/*
